@@ -2,7 +2,7 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <main>
+    <main className="App body-font font-poppins">
       <Header />
     </main>
   );
