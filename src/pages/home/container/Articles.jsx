@@ -1,6 +1,7 @@
 import React from "react";
 import ArticleCard from "../../../components/ArticleCard";
 
+import { FaArrowRight } from "react-icons/fa";
 
 const Articles = () => {
   return (
@@ -10,6 +11,10 @@ const Articles = () => {
         <ArticleCard className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]" />
         <ArticleCard className="w-full md:w-[calc(50%-20px)] lg:w-[calc(33.33%-21px)]" />
       </div>
+      <button className="flex items-center mx-auto text-primary font-bold space-x-2 border-2 border-primary px-6 py-3 rounded-lg">
+        <span>More Articles</span>
+        <FaArrowRight className="w-3 h-3" />
+      </button>
     </section>
   );
 };
