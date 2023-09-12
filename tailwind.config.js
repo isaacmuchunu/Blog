@@ -6,6 +6,7 @@ export default {
       colors: {
         primary: "#1565D8",
         dark: {
+          light: "#5A7184",
           soft: "#183B56",
           hard: "#0D2436",
         },
