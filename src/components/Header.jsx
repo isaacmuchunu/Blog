@@ -93,8 +93,8 @@ const Header = () => {
           } transition-all duration-300 mt-[56px] lg:mt-0 bg-dark-hard lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static space-x-9 items-center`}
         >
           <ul className="text-white items-center uppercase gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row space-x-8 tracking-tight lg:tracking-wide font-poppins font-semibold">
-            {navItems.map((navItem) => (
-              <Navbar key={navItem.name} navItem={navItem} />
+            {navItems.map((navItem, index) => (
+              <Navbar key={index} navItem={navItem} />
             ))}
           </ul>
           <button className=" mt-2 uppercase font-poppins font-semibold tracking-tight lg:tracking-wide bg-dark-soft px-4 py-1 rounded-md ring-1 ring-blue-950 hover:outline-none hover:bg-dark-hard hover:ease-in-out text-gray-200 focus:outline-none active:bg-blue-800 ">

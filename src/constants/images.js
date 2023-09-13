@@ -5,6 +5,7 @@ import post1profile from "../assets/posts/post1profile.svg";
 import CTA from "../assets/CTA.png";
 import footerLogo from "../assets/footerLogo.png";
 import footerLogo1 from "../assets/footerLogo1.png";
+import post from "../assets/posts/post.png";
 const images = {
   Logo,
   hero,
@@ -13,5 +14,6 @@ const images = {
   CTA,
   footerLogo,
   footerLogo1,
+  post,
 };
 export default images;
