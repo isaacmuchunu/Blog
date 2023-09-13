@@ -70,11 +70,8 @@ const Header = () => {
             <img
               src={images.Logo}
               alt="logo"
-              className="w-8 h-8 brightness-150 rounded-full"
+              className="w-20 h-12 object-center brightness-110"
             />
-          </a>
-          <a href="/">
-            <p className="text-dark-soft uppercase font-poppins font-bold text-xl pl-2">Cybershield</p>
           </a>
         </div>
         <div className="z-50 lg:hidden">
