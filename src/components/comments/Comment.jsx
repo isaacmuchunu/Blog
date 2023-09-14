@@ -12,6 +12,8 @@ const Comment = ({
   addComment,
   parentId = null,
   updateComment,
+  deleteComment,
+  replies,
 }) => {
   const isUserLoggedIn = Boolean(loggedInUserId);
   const commentBelongsToUser = loggedInUserId === comment.user._id;
@@ -81,7 +83,10 @@ const Comment = ({
                 />
                 <span>Edit</span>
               </button>
-              <button className="flex items-center space-x-2">
+              <button
+                className="flex items-center space-x-2"
+                onClick={() => deleteComment(comment._id)}
+              >
                 <FiTrash className="h-auto w-4" />
                 <span>Delete</span>
               </button>
@@ -96,6 +101,24 @@ const Comment = ({
             }
             formCancelHandler={() => setAffectedComment(null)}
           />
+        )}
+        {replies.length > 0 && (
+          <div>
+            {replies.map((reply) => (
+              <Comment
+                key={reply._id}
+                addComment={addComment}
+                affectedComment={affectedComment}
+                setAffectedComment={setAffectedComment}
+                comment={reply}
+                deleteComment={deleteComment}
+                loggedInUserId={loggedInUserId}
+                replies={[]}
+                updateComment={updateComment}
+                parentId={comment._id}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>
