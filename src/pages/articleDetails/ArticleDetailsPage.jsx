@@ -4,6 +4,7 @@ import BreadCrumbs from "../../components/BreadCrumbs";
 import { images } from "../../constants";
 import SuggestedPosts from "./container/suggestedPosts";
 import { Link } from "react-router-dom";
+import CommentsContainer from "../../components/comments/CommentsContainer";
 
 const tagsData = ["medical", "lifestyle", "learn", "food", "education", "diet"];
 
@@ -70,6 +71,7 @@ const ArticleDetailsPage = () => {
               lectus proin.
             </p>
           </div>
+          <CommentsContainer className="mt-10"/>
         </article>
         <SuggestedPosts
           header="Latest Articles"
