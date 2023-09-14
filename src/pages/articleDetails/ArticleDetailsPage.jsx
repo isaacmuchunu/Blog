@@ -5,6 +5,7 @@ import { images } from "../../constants";
 import SuggestedPosts from "./container/suggestedPosts";
 import { Link } from "react-router-dom";
 import CommentsContainer from "../../components/comments/CommentsContainer";
+import SocialShareButtons from "../../components/SocialShareButtons";
 
 const tagsData = ["medical", "lifestyle", "learn", "food", "education", "diet"];
 
@@ -71,14 +72,29 @@ const ArticleDetailsPage = () => {
               lectus proin.
             </p>
           </div>
-          <CommentsContainer className="mt-10" loggedInUserId="a"/>
+          <CommentsContainer className="mt-10" loggedInUserId="a" />
         </article>
-        <SuggestedPosts
-          header="Latest Articles"
-          posts={postsData}
-          tags={tagsData}
-          className="mt-8 lg:mt-0 lg:max-w-xs"
-        />
+        <div>
+          <SuggestedPosts
+            header="Latest Articles"
+            posts={postsData}
+            tags={tagsData}
+            className="mt-8 lg:mt-0 lg:max-w-xs"
+          />
+          <div className="mt-7">
+            <h2 className="font-poppins font-medium text-dark-hard md-4 md:text-xl">
+              Share on:
+            </h2>
+            <SocialShareButtons
+              url={encodeURI(
+                "https://gigsnest.com/apple-opens-another-megastore-in-china-amid-william-barr-criticism/"
+              )}
+              title={encodeURIComponent(
+                "Apple opens another megastore in China amid William Barr criticism"
+              )}
+            />
+          </div>
+        </div>
       </section>
     </MainLayout>
   );
