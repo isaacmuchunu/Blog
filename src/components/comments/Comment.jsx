@@ -11,6 +11,7 @@ const Comment = ({
   setAffectedComment,
   addComment,
   parentId = null,
+  updateComment,
 }) => {
   const isUserLoggedIn = Boolean(loggedInUserId);
   const commentBelongsToUser = loggedInUserId === comment.user._id;
@@ -18,8 +19,12 @@ const Comment = ({
     affectedComment &&
     affectedComment.type === "replying" &&
     affectedComment._id === comment._id;
-  const repliedCommentId = parent ? parent : comment._id;
-  const replyOnUserId = comment.user._id
+  const isEditing =
+    affectedComment &&
+    affectedComment.type === "editing" &&
+    affectedComment._id === comment._id;
+  const repliedCommentId = parentId ? parentId : comment._id;
+  const replyOnUserId = comment.user._id;
   return (
     <div className="flex flex-nowrap gap-x-3 items-start rounded-lg bg-[#f2f4f5] p-3">
       <img
@@ -40,7 +45,19 @@ const Comment = ({
             minute: "2-digit",
           })}
         </span>
-        <p className="font-poppins mt-[10px] text-dark-light">{comment.desc}</p>
+        {!isEditing && (
+          <p className="font-poppins mt-[10px] text-dark-light">
+            {comment.desc}
+          </p>
+        )}
+        {isEditing && (
+          <CommentForm
+            btnLabel="Update"
+            formSubmitHandler={(value) => updateComment(value, comment._id)}
+            formCancelHandler={() => setAffectedComment(null)}
+            initialText={comment.desc}
+          />
+        )}
         <div className="flex items-center gap-x-3 text-dark-light font-poppins text-sm mt-3 mb-3">
           {isUserLoggedIn && (
             <button
@@ -56,7 +73,12 @@ const Comment = ({
           {commentBelongsToUser && (
             <>
               <button className="flex items-center space-x-2">
-                <FiEdit2 className="h-auto w-4" />
+                <FiEdit2
+                  className="h-auto w-4"
+                  onClick={() =>
+                    setAffectedComment({ type: "editing", _id: comment._id })
+                  }
+                />
                 <span>Edit</span>
               </button>
               <button className="flex items-center space-x-2">
@@ -69,8 +91,10 @@ const Comment = ({
         {isReplying && (
           <CommentForm
             btnLabel="Reply"
-            formSubmitHandler={(value) => addComment(value, repliedCommentId, replyOnUserId)}
-            formCancelHandler={()=>setAffectedComment(null)}
+            formSubmitHandler={(value) =>
+              addComment(value, repliedCommentId, replyOnUserId)
+            }
+            formCancelHandler={() => setAffectedComment(null)}
           />
         )}
       </div>
